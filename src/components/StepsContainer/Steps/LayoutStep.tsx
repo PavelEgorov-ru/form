@@ -1,10 +1,16 @@
 import { FC } from "react";
 import { useAppDispatch } from "../../../hooks";
+import { formActions } from "../../../services/reducers";
 import type { TLayout } from "../../../types";
 import { Card, Button } from "@mui/material";
 
 const LayoutStep: FC<TLayout> = ({ children }) => {
   const dispatch = useAppDispatch();
+
+  const next = () => {
+    dispatch(formActions.nextStep());
+  };
+
   return (
     <Card
       sx={{
@@ -13,7 +19,9 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
       }}
     >
       {children}
-      <Button variant="contained">Продолжить</Button>
+      <Button variant="contained" onClick={next}>
+        Продолжить
+      </Button>
     </Card>
   );
 };

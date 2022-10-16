@@ -9,7 +9,15 @@ const initialState: TformState = {
 const formSlice = createSlice({
   name: "form",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    nextStep(state) {
+      if (state.stepCount !== 2) {
+        state.stepCount += 1;
+      } else {
+        state.stepCount = 0;
+      }
+    },
+  },
 });
 
 export const formReducers = formSlice.reducer;
