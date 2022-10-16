@@ -17,6 +17,9 @@ const formSlice = createSlice({
         state.stepCount = 0;
       }
     },
+    backStep(state) {
+      state.stepCount -= 1;
+    },
   },
 });
 
