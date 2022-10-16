@@ -1,14 +1,6 @@
 import { useState } from "react";
 
-import {
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Typography,
-  Box,
-  dividerClasses,
-} from "@mui/material";
+import { Stepper, Step, StepLabel, Box } from "@mui/material";
 
 const steps = ["Логин и пароль", "Где проживаете", "Номер телефона"];
 
