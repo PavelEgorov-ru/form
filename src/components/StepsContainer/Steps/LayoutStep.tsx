@@ -1,8 +1,10 @@
-import { Card, Button } from "@mui/material";
 import { FC } from "react";
+import { useAppDispatch } from "../../../hooks";
 import type { TLayout } from "../../../types";
+import { Card, Button } from "@mui/material";
 
 const LayoutStep: FC<TLayout> = ({ children }) => {
+  const dispatch = useAppDispatch();
   return (
     <Card
       sx={{
