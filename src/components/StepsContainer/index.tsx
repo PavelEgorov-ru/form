@@ -8,7 +8,7 @@ import LoginStep from "./Steps/LoginStep";
 const steps = ["Логин и пароль", "Где проживаете", "Номер телефона"];
 
 const StepContainer = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(2);
   return (
     <Box sx={{ width: "100%" }}>
       <Stepper activeStep={activeStep}>

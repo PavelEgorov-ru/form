@@ -1,5 +1,7 @@
+import LayoutStep from "./LayoutStep";
+
 const PhoneStep = () => {
-  return <div> Шаг с вводом телефона </div>;
+  return <LayoutStep> Шаг с вводом телефона </LayoutStep>;
 };
 
 export default PhoneStep;

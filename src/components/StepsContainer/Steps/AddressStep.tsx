@@ -1,5 +1,7 @@
+import LayoutStep from "./LayoutStep";
+
 const AddressStep = () => {
-  return <div> Шаг с вводом адреса </div>;
+  return <LayoutStep> Шаг с вводом адреса </LayoutStep>;
 };
 
 export default AddressStep;
