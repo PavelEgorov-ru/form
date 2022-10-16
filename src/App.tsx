@@ -1,5 +1,13 @@
+import { Container } from "@mui/material";
+
+import StepContainer from "./components/StepContainer";
+
 function App() {
-  return <div className="App">старт</div>;
+  return (
+    <Container>
+      <StepContainer />
+    </Container>
+  );
 }
 
 export default App;
