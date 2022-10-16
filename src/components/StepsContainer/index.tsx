@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 import { Stepper, Step, StepLabel, Box } from "@mui/material";
+import AddressStep from "./Steps/AddressStep";
+import PhoneStep from "./Steps/PhoneStep";
+import LoginStep from "./Steps/LoginStep";
 
 const steps = ["Логин и пароль", "Где проживаете", "Номер телефона"];
 
@@ -18,9 +21,9 @@ const StepContainer = () => {
           );
         })}
       </Stepper>
-      {activeStep === 0 && <div>шаг логин и пароль</div>}
-      {activeStep === 1 && <div>шаг где проживаете</div>}
-      {activeStep === 2 && <div>шаг номер телефона</div>}
+      {activeStep === 0 && <LoginStep />}
+      {activeStep === 1 && <AddressStep />}
+      {activeStep === 2 && <PhoneStep />}
     </Box>
   );
 };

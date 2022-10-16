@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 
-import StepContainer from "./components/StepContainer";
+import StepContainer from "./components/StepsContainer";
 
 function App() {
   return (
