@@ -1,4 +1,4 @@
-import { Card } from "@mui/material";
+import { Card, Button } from "@mui/material";
 import { FC } from "react";
 import type { TLayout } from "../../../types";
 
@@ -7,10 +7,11 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
     <Card
       sx={{
         marginTop: "30px",
-        padding: "0px 20px",
+        padding: "20px",
       }}
     >
       {children}
+      <Button variant="contained">Продолжить</Button>
     </Card>
   );
 };
