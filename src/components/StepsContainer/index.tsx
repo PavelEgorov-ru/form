@@ -8,10 +8,10 @@ import LoginStep from "./Steps/LoginStep";
 const steps = ["Логин и пароль", "Где проживаете", "Номер телефона"];
 
 const StepContainer = () => {
-  const { stepCount } = useAppSelector((store) => store.form);
+  const { stepCount } = useAppSelector((store) => store.formState.form);
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box component="form" sx={{ width: "100%" }}>
       <Stepper activeStep={stepCount}>
         {steps.map((label, index) => {
           const stepProps: { completed?: boolean } = {};

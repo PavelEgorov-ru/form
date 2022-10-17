@@ -1,9 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import type { TformState } from "./types";
+import type { TFormState } from "./types";
 
-const initialState: TformState = {
-  stepCount: 0,
+const initialState: TFormState = {
+  form: {
+    stepCount: 0,
+    login: "",
+    email: "",
+    password: "",
+    passwordRepet: "",
+  },
+  isActiveButton: true,
 };
 
 const formSlice = createSlice({
@@ -11,14 +18,25 @@ const formSlice = createSlice({
   initialState: initialState,
   reducers: {
     nextStep(state) {
-      if (state.stepCount !== 2) {
-        state.stepCount += 1;
+      if (state.form.stepCount !== 2) {
+        state.form.stepCount += 1;
+        state.isActiveButton = true;
       } else {
-        state.stepCount = 0;
+        state.form.stepCount = 0;
       }
     },
     backStep(state) {
-      state.stepCount -= 1;
+      state.form.stepCount -= 1;
+    },
+    sendValue(state, action: PayloadAction<Partial<TFormState["form"]>>) {
+      console.log(action.payload);
+      state.form = { ...state.form, ...action.payload };
+    },
+    isActive(state) {
+      state.isActiveButton = false;
+    },
+    isNoActiv(state) {
+      state.isActiveButton = true;
     },
   },
 });
