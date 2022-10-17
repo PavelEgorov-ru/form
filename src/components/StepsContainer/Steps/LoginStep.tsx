@@ -1,50 +1,68 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Typography, TextField } from "@mui/material";
 import LayoutStep from "./LayoutStep";
 
 const LoginStep = () => {
   const [inputs, setInputs] = useState({
+    login: "",
     email: "",
     password: "",
-    name: "",
+    passwordRepet: "",
   });
 
   const changeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const id = e.target.id;
-    const value = e.target.value;
-    console.log(e.target.name);
+    const { name, value, required } = e.target;
+    console.log(name, value, required);
+    console.log(inputs);
 
-    setInputs((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
+    if (required) {
+      setInputs({
+        ...inputs,
+        [name]: value,
+      });
+    }
   };
 
-  const isReq = (obj: any) => {
-    console.log("вызов функции");
+  const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") return false;
     }
     return true;
   };
 
+  useEffect(() => {
+    console.log(checkRequired(inputs));
+  }, [inputs]);
+
   // console.log("isReq", isReq(inputs));
 
   return (
     <LayoutStep>
-      <Typography> шаг с вводом логина </Typography>
+      <TextField
+        name="login"
+        fullWidth
+        required
+        onBlur={(e) => changeInput(e)}
+      ></TextField>
       <TextField
         name="email"
         fullWidth
         required
-        onChange={(e) => changeInput(e)}
+        onBlur={(e) => changeInput(e)}
       ></TextField>
       <TextField
         name="password"
         fullWidth
-        onChange={(e) => changeInput(e)}
+        required
+        onBlur={(e) => changeInput(e)}
+      ></TextField>
+      <TextField
+        name="passwordRepet"
+        fullWidth
+        required
+        onBlur={(e) => changeInput(e)}
       ></TextField>
     </LayoutStep>
   );
