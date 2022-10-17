@@ -1,6 +1,8 @@
 export type TFormState = {
   form: TForm;
-  isActiveButton: boolean;
+  isActiveButtonNext: boolean;
+  isActiveButtonCode: boolean;
+  isActiveInput: boolean;
 };
 
 export type TForm = {
@@ -13,4 +15,6 @@ export type TForm = {
   city: string;
   street: string;
   house: string;
+  phone: string;
+  code: string;
 };
