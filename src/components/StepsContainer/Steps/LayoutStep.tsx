@@ -19,6 +19,10 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
     dispatch(formActions.backStep());
   };
 
+  const finish: React.MouseEventHandler<HTMLButtonElement> = () => {
+    alert("конец");
+  };
+
   const buttons = [
     <Button
       key="back"
@@ -31,10 +35,10 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
     <Button
       key="next"
       variant="contained"
-      onClick={next}
+      onClick={stepCount === 2 ? finish : next}
       disabled={isActiveButtonNext}
     >
-      Продолжить
+      {stepCount === 2 ? "Отправить" : "Продолжить"}
     </Button>,
   ];
 
