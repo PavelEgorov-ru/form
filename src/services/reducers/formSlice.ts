@@ -58,6 +58,22 @@ const formSlice = createSlice({
     isNoActivInput(state) {
       state.isActiveInput = true;
     },
+    resetForm(state) {
+      state.form.stepCount = 0;
+      state.form.login = "";
+      state.form.email = "";
+      state.form.password = "";
+      state.form.passwordRepet = "";
+      state.form.country = "";
+      state.form.city = "";
+      state.form.street = "";
+      state.form.house = "";
+      state.form.phone = "";
+      state.form.code = "";
+      state.isActiveButtonNext = true;
+      state.isActiveButtonCode = true;
+      state.isActiveInput = true;
+    },
   },
 });
 

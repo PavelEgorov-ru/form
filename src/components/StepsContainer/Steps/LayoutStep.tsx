@@ -21,6 +21,7 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
 
   const finish: React.MouseEventHandler<HTMLButtonElement> = () => {
     alert("конец");
+    dispatch(formActions.resetForm());
   };
 
   const buttons = [
