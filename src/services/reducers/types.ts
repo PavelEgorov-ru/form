@@ -13,4 +13,6 @@ export type TForm = {
   city: string;
   street: string;
   house: string;
+  phone: string;
+  code: string;
 };

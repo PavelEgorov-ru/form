@@ -13,6 +13,8 @@ const initialState: TFormState = {
     city: "",
     street: "",
     house: "",
+    phone: "",
+    code: "",
   },
   isActiveButton: true,
 };
