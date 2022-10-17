@@ -25,6 +25,7 @@ const formSlice = createSlice({
   name: "form",
   initialState: initialState,
   reducers: {
+    initApp(state) {},
     nextStep(state) {
       if (state.form.stepCount !== 2) {
         state.form.stepCount += 1;
@@ -74,7 +75,7 @@ const formSlice = createSlice({
       state.isActiveButtonNext = true;
       state.isActiveButtonCode = true;
       state.isActiveInput = true;
-      localStorage.removeItem("formState");
+      localStorage.clear();
     },
   },
 });
