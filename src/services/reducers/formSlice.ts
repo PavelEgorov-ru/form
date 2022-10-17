@@ -17,6 +17,7 @@ const initialState: TFormState = {
     code: "",
   },
   isActiveButtonNext: true,
+  isActiveButtonCode: true,
 };
 
 const formSlice = createSlice({
@@ -43,6 +44,12 @@ const formSlice = createSlice({
     },
     isNoActivButtonNext(state) {
       state.isActiveButtonNext = true;
+    },
+    isActiveButtonCode(state) {
+      state.isActiveButtonCode = false;
+    },
+    isNoActivButtonCode(state) {
+      state.isActiveButtonCode = true;
     },
   },
 });
