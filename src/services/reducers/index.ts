@@ -6,5 +6,5 @@ import { formReducers } from "./formSlice";
 export { formActions } from "./formSlice";
 
 export const rootReducer = combineReducers({
-  form: formReducers,
+  formState: formReducers,
 });

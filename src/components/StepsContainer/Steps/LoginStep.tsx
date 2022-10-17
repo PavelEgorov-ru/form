@@ -3,8 +3,7 @@ import { Typography, TextField } from "@mui/material";
 import LayoutStep from "./LayoutStep";
 
 const LoginStep = () => {
-  const [inputs, setInputs] = useState({
-    login: "",
+  const [inputsRequired, setInputsRequired] = useState({
     email: "",
     password: "",
     passwordRepet: "",
@@ -14,12 +13,10 @@ const LoginStep = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value, required } = e.target;
-    console.log(name, value, required);
-    console.log(inputs);
 
     if (required) {
-      setInputs({
-        ...inputs,
+      setInputsRequired({
+        ...inputsRequired,
         [name]: value,
       });
     }
@@ -33,33 +30,34 @@ const LoginStep = () => {
   };
 
   useEffect(() => {
-    console.log(checkRequired(inputs));
-  }, [inputs]);
-
-  // console.log("isReq", isReq(inputs));
+    console.log(checkRequired(inputsRequired));
+  }, [inputsRequired]);
 
   return (
     <LayoutStep>
       <TextField
         name="login"
+        placeholder="Логин"
         fullWidth
-        required
         onBlur={(e) => changeInput(e)}
       ></TextField>
       <TextField
         name="email"
+        placeholder="Электронная почта *"
         fullWidth
         required
         onBlur={(e) => changeInput(e)}
       ></TextField>
       <TextField
         name="password"
+        placeholder="Пароль *"
         fullWidth
         required
         onBlur={(e) => changeInput(e)}
       ></TextField>
       <TextField
         name="passwordRepet"
+        placeholder="Повторите пароль *"
         fullWidth
         required
         onBlur={(e) => changeInput(e)}

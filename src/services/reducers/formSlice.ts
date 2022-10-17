@@ -3,7 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { TformState } from "./types";
 
 const initialState: TformState = {
-  stepCount: 0,
+  form: {
+    stepCount: 0,
+    login: "",
+    email: "",
+    password: "",
+    passwordRepet: "",
+  },
+  isActiveButton: true,
 };
 
 const formSlice = createSlice({
@@ -11,14 +18,14 @@ const formSlice = createSlice({
   initialState: initialState,
   reducers: {
     nextStep(state) {
-      if (state.stepCount !== 2) {
-        state.stepCount += 1;
+      if (state.form.stepCount !== 2) {
+        state.form.stepCount += 1;
       } else {
-        state.stepCount = 0;
+        state.form.stepCount = 0;
       }
     },
     backStep(state) {
-      state.stepCount -= 1;
+      state.form.stepCount -= 1;
     },
   },
 });

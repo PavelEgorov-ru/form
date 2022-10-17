@@ -8,7 +8,7 @@ import LoginStep from "./Steps/LoginStep";
 const steps = ["Логин и пароль", "Где проживаете", "Номер телефона"];
 
 const StepContainer = () => {
-  const { stepCount } = useAppSelector((store) => store.form);
+  const { stepCount } = useAppSelector((store) => store.formState.form);
 
   return (
     <Box component="form" sx={{ width: "100%" }}>
