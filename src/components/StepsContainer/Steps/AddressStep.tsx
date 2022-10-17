@@ -38,7 +38,7 @@ const AddressStep = () => {
   };
 
   useEffect(() => {
-    console.log(checkRequired(inputsRequired));
+    checkRequired(inputsRequired);
   }, [inputsRequired]);
 
   return (

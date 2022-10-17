@@ -7,6 +7,7 @@ import LayoutStep from "./LayoutStep";
 const PhoneStep = () => {
   const dispatch = useAppDispatch();
   const { form } = useAppSelector((store) => store.formState);
+  const { isActiveButtonCode } = useAppSelector((store) => store.formState);
 
   const [inputsRequired, setInputsRequired] = useState({
     phone: form.phone,
@@ -38,9 +39,21 @@ const PhoneStep = () => {
     dispatch(formActions.isActiveButtonNext());
   };
 
+  const checkRequiredPhone = (code: string) => {
+    if (code === "") {
+      dispatch(formActions.isNoActivButtonCode());
+      return;
+    }
+    dispatch(formActions.isActiveButtonCode());
+  };
+
   useEffect(() => {
-    console.log(checkRequired(inputsRequired));
+    checkRequired(inputsRequired);
   }, [inputsRequired]);
+
+  useEffect(() => {
+    checkRequiredPhone(inputsRequired.phone);
+  }, [inputsRequired.phone]);
 
   return (
     <LayoutStep>
@@ -56,7 +69,7 @@ const PhoneStep = () => {
         key="next"
         variant="contained"
         // onClick={next}
-        // disabled={isActiveButton}
+        disabled={isActiveButtonCode}
       >
         Получить код
       </Button>
@@ -67,6 +80,7 @@ const PhoneStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.code}
+        disabled
       ></TextField>
     </LayoutStep>
   );

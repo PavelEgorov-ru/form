@@ -40,7 +40,7 @@ const LoginStep = () => {
   };
 
   useEffect(() => {
-    console.log(checkRequired(inputsRequired));
+    checkRequired(inputsRequired);
   }, [inputsRequired]);
 
   return (
