@@ -5,6 +5,43 @@ import { Button, TextField } from "@mui/material";
 import LayoutStep from "./LayoutStep";
 
 const PhoneStep = () => {
+  const dispatch = useAppDispatch();
+  const { form } = useAppSelector((store) => store.formState);
+
+  const [inputsRequired, setInputsRequired] = useState({
+    phone: form.phone,
+    code: form.code,
+  });
+
+  const changeInput = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, required } = e.target;
+    dispatch(formActions.sendValue({ [name]: value }));
+
+    if (required) {
+      setInputsRequired({
+        ...inputsRequired,
+        [name]: value,
+      });
+    }
+  };
+
+  // пока не знаю как правильно типизировать
+  const checkRequired = (obj: any) => {
+    for (const key in obj) {
+      if (obj[key] === "") {
+        dispatch(formActions.isNoActivButtonNext());
+        return;
+      }
+    }
+    dispatch(formActions.isActiveButtonNext());
+  };
+
+  useEffect(() => {
+    console.log(checkRequired(inputsRequired));
+  }, [inputsRequired]);
+
   return (
     <LayoutStep>
       <TextField
@@ -12,8 +49,8 @@ const PhoneStep = () => {
         placeholder="Телефон *"
         fullWidth
         required
-        // onChange={(e) => changeInput(e)}
-        // value={form.login}
+        onChange={(e) => changeInput(e)}
+        value={form.phone}
       ></TextField>
       <Button
         key="next"
@@ -28,8 +65,8 @@ const PhoneStep = () => {
         placeholder="Введите полученый код *"
         fullWidth
         required
-        // onChange={(e) => changeInput(e)}
-        // value={form.email}
+        onChange={(e) => changeInput(e)}
+        value={form.code}
       ></TextField>
     </LayoutStep>
   );

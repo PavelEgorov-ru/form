@@ -30,11 +30,11 @@ const AddressStep = () => {
   const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
-        dispatch(formActions.isNoActiv());
+        dispatch(formActions.isNoActivButtonNext());
         return;
       }
     }
-    dispatch(formActions.isActive());
+    dispatch(formActions.isActiveButtonNext());
   };
 
   useEffect(() => {
