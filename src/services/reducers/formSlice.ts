@@ -29,6 +29,7 @@ const formSlice = createSlice({
       if (state.form.stepCount !== 2) {
         state.form.stepCount += 1;
         state.isActiveButtonNext = true;
+        localStorage.setItem("formState", JSON.stringify(state.form));
       } else {
         state.form.stepCount = 0;
       }
@@ -73,6 +74,7 @@ const formSlice = createSlice({
       state.isActiveButtonNext = true;
       state.isActiveButtonCode = true;
       state.isActiveInput = true;
+      localStorage.removeItem("formState");
     },
   },
 });
