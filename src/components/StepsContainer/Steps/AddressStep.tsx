@@ -13,6 +13,34 @@ const AddressStep = () => {
     city: form.city,
   });
 
+  const changeInput = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, required } = e.target;
+    dispatch(formActions.sendValue({ [name]: value }));
+
+    if (required) {
+      setInputsRequired({
+        ...inputsRequired,
+        [name]: value,
+      });
+    }
+  };
+
+  const checkRequired = (obj: any) => {
+    for (const key in obj) {
+      if (obj[key] === "") {
+        dispatch(formActions.isNoActiv());
+        return;
+      }
+    }
+    dispatch(formActions.isActive());
+  };
+
+  useEffect(() => {
+    console.log(checkRequired(inputsRequired));
+  }, [inputsRequired]);
+
   return (
     <LayoutStep>
       <TextField
