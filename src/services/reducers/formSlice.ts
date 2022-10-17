@@ -25,7 +25,12 @@ const formSlice = createSlice({
   name: "form",
   initialState: initialState,
   reducers: {
-    initApp(state) {},
+    initApp(state, action: PayloadAction<string | null>) {
+      if (typeof action.payload === "string") {
+        const form = JSON.parse(action.payload);
+        state.form = { ...form };
+      }
+    },
     nextStep(state) {
       if (state.form.stepCount !== 2) {
         state.form.stepCount += 1;
