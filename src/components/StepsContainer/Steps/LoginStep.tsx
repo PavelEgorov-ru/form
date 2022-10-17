@@ -1,18 +1,24 @@
-import { useState, useCallback, useEffect } from "react";
-import { Typography, TextField } from "@mui/material";
+import { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import { formActions } from "../../../services/reducers";
+import { TextField } from "@mui/material";
 import LayoutStep from "./LayoutStep";
 
 const LoginStep = () => {
+  const dispatch = useAppDispatch();
+  const { form } = useAppSelector((store) => store.formState);
+
   const [inputsRequired, setInputsRequired] = useState({
-    email: "",
-    password: "",
-    passwordRepet: "",
+    email: form.email,
+    password: form.password,
+    passwordRepet: form.passwordRepet,
   });
 
   const changeInput = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value, required } = e.target;
+    dispatch(formActions.sendValue({ [name]: value }));
 
     if (required) {
       setInputsRequired({
@@ -22,11 +28,15 @@ const LoginStep = () => {
     }
   };
 
+  // пока не знаю как правильно типизировать
   const checkRequired = (obj: any) => {
     for (const key in obj) {
-      if (obj[key] === "") return false;
+      if (obj[key] === "") {
+        dispatch(formActions.isNoActiv());
+        return;
+      }
     }
-    return true;
+    dispatch(formActions.isActive());
   };
 
   useEffect(() => {
@@ -39,28 +49,32 @@ const LoginStep = () => {
         name="login"
         placeholder="Логин"
         fullWidth
-        onBlur={(e) => changeInput(e)}
+        onChange={(e) => changeInput(e)}
+        value={form.login}
       ></TextField>
       <TextField
         name="email"
         placeholder="Электронная почта *"
         fullWidth
         required
-        onBlur={(e) => changeInput(e)}
+        onChange={(e) => changeInput(e)}
+        value={form.email}
       ></TextField>
       <TextField
         name="password"
         placeholder="Пароль *"
         fullWidth
         required
-        onBlur={(e) => changeInput(e)}
+        onChange={(e) => changeInput(e)}
+        value={form.password}
       ></TextField>
       <TextField
         name="passwordRepet"
         placeholder="Повторите пароль *"
         fullWidth
         required
-        onBlur={(e) => changeInput(e)}
+        onChange={(e) => changeInput(e)}
+        value={form.passwordRepet}
       ></TextField>
     </LayoutStep>
   );
