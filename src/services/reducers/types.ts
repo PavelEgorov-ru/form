@@ -9,4 +9,8 @@ export type TForm = {
   email: string;
   password: string;
   passwordRepet: string;
+  country: string;
+  city: string;
+  street: string;
+  house: string;
 };
