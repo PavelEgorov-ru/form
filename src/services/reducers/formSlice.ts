@@ -9,6 +9,10 @@ const initialState: TFormState = {
     email: "",
     password: "",
     passwordRepet: "",
+    country: "",
+    city: "",
+    street: "",
+    house: "",
   },
   isActiveButton: true,
 };
