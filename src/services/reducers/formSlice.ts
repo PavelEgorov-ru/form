@@ -18,6 +18,7 @@ const initialState: TFormState = {
   },
   isActiveButtonNext: true,
   isActiveButtonCode: true,
+  isActiveInput: true,
 };
 
 const formSlice = createSlice({
@@ -50,6 +51,12 @@ const formSlice = createSlice({
     },
     isNoActivButtonCode(state) {
       state.isActiveButtonCode = true;
+    },
+    isActiveInput(state) {
+      state.isActiveInput = false;
+    },
+    isNoActivInput(state) {
+      state.isActiveInput = true;
     },
   },
 });

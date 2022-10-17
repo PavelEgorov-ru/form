@@ -7,7 +7,9 @@ import LayoutStep from "./LayoutStep";
 const PhoneStep = () => {
   const dispatch = useAppDispatch();
   const { form } = useAppSelector((store) => store.formState);
-  const { isActiveButtonCode } = useAppSelector((store) => store.formState);
+  const { isActiveButtonCode, isActiveInput } = useAppSelector(
+    (store) => store.formState
+  );
 
   const [inputsRequired, setInputsRequired] = useState({
     phone: form.phone,
@@ -26,6 +28,10 @@ const PhoneStep = () => {
         [name]: value,
       });
     }
+  };
+
+  const getCode = () => {
+    dispatch(formActions.isActiveInput());
   };
 
   // пока не знаю как правильно типизировать
@@ -68,7 +74,7 @@ const PhoneStep = () => {
       <Button
         key="next"
         variant="contained"
-        // onClick={next}
+        onClick={getCode}
         disabled={isActiveButtonCode}
       >
         Получить код
@@ -80,7 +86,7 @@ const PhoneStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.code}
-        disabled
+        disabled={isActiveInput}
       ></TextField>
     </LayoutStep>
   );

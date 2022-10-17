@@ -2,6 +2,7 @@ export type TFormState = {
   form: TForm;
   isActiveButtonNext: boolean;
   isActiveButtonCode: boolean;
+  isActiveInput: boolean;
 };
 
 export type TForm = {
