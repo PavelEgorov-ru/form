@@ -30,11 +30,11 @@ const AddressStep = () => {
   const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
-        dispatch(formActions.isNoActivButtonNext());
+        dispatch(formActions.isDisabledButtonNext());
         return;
       }
     }
-    dispatch(formActions.isActiveButtonNext());
+    dispatch(formActions.isNoDisabledButtonNext());
   };
 
   useEffect(() => {
@@ -50,6 +50,8 @@ const AddressStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.country}
+        margin="dense"
+        label={"Страна"}
       ></TextField>
       <TextField
         name="city"
@@ -58,6 +60,8 @@ const AddressStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.city}
+        margin="dense"
+        label={"Город"}
       ></TextField>
       <TextField
         name="street"
@@ -65,6 +69,8 @@ const AddressStep = () => {
         fullWidth
         onChange={(e) => changeInput(e)}
         value={form.street}
+        margin="dense"
+        label={"Улица"}
       ></TextField>
       <TextField
         name="house"
@@ -72,6 +78,8 @@ const AddressStep = () => {
         fullWidth
         onChange={(e) => changeInput(e)}
         value={form.house}
+        margin="dense"
+        label={"Дом"}
       ></TextField>
     </LayoutStep>
   );

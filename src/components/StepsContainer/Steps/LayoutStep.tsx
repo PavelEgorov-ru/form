@@ -7,7 +7,7 @@ import { Card, Button, Box, ButtonGroup } from "@mui/material";
 const LayoutStep: FC<TLayout> = ({ children }) => {
   const dispatch = useAppDispatch();
   const { stepCount } = useAppSelector((store) => store.formState.form);
-  const { isActiveButtonNext } = useAppSelector((store) => store.formState);
+  const { isDisabledButtonNext } = useAppSelector((store) => store.formState);
 
   const isActiveButtonBack: boolean = stepCount === 0 ? true : false;
 
@@ -37,7 +37,7 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
       key="next"
       variant="contained"
       onClick={stepCount === 2 ? finish : next}
-      disabled={isActiveButtonNext}
+      disabled={isDisabledButtonNext}
     >
       {stepCount === 2 ? "Отправить" : "Продолжить"}
     </Button>,

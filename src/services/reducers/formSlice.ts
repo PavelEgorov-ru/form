@@ -16,9 +16,9 @@ const initialState: TFormState = {
     phone: "",
     code: "",
   },
-  isActiveButtonNext: true,
-  isActiveButtonCode: true,
-  isActiveInput: true,
+  isDisabledButtonNext: true,
+  isDisabledButtonCode: true,
+  isDisabledInput: true,
 };
 
 const formSlice = createSlice({
@@ -34,7 +34,7 @@ const formSlice = createSlice({
     nextStep(state) {
       if (state.form.stepCount !== 2) {
         state.form.stepCount += 1;
-        state.isActiveButtonNext = true;
+        state.isDisabledButtonNext = true;
         localStorage.setItem("formState", JSON.stringify(state.form));
       } else {
         state.form.stepCount = 0;
@@ -47,23 +47,23 @@ const formSlice = createSlice({
       console.log(action.payload);
       state.form = { ...state.form, ...action.payload };
     },
-    isActiveButtonNext(state) {
-      state.isActiveButtonNext = false;
+    isNoDisabledButtonNext(state) {
+      state.isDisabledButtonNext = false;
     },
-    isNoActivButtonNext(state) {
-      state.isActiveButtonNext = true;
+    isDisabledButtonNext(state) {
+      state.isDisabledButtonNext = true;
     },
-    isActiveButtonCode(state) {
-      state.isActiveButtonCode = false;
+    isNoDisabledButtonCode(state) {
+      state.isDisabledButtonCode = false;
     },
-    isNoActivButtonCode(state) {
-      state.isActiveButtonCode = true;
+    isDisabledButtonCode(state) {
+      state.isDisabledButtonCode = true;
     },
-    isActiveInput(state) {
-      state.isActiveInput = false;
+    isNoDisabledInput(state) {
+      state.isDisabledInput = false;
     },
-    isNoActivInput(state) {
-      state.isActiveInput = true;
+    isDisabledInput(state) {
+      state.isDisabledInput = true;
     },
     resetForm(state) {
       state.form.stepCount = 0;
@@ -77,9 +77,9 @@ const formSlice = createSlice({
       state.form.house = "";
       state.form.phone = "";
       state.form.code = "";
-      state.isActiveButtonNext = true;
-      state.isActiveButtonCode = true;
-      state.isActiveInput = true;
+      state.isDisabledButtonNext = true;
+      state.isDisabledButtonCode = true;
+      state.isDisabledInput = true;
       localStorage.clear();
     },
   },

@@ -32,11 +32,11 @@ const LoginStep = () => {
   const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
-        dispatch(formActions.isNoActivButtonNext());
+        dispatch(formActions.isDisabledButtonNext());
         return;
       }
     }
-    dispatch(formActions.isActiveButtonNext());
+    dispatch(formActions.isNoDisabledButtonNext());
   };
 
   useEffect(() => {
@@ -51,6 +51,8 @@ const LoginStep = () => {
         fullWidth
         onChange={(e) => changeInput(e)}
         value={form.login}
+        margin="dense"
+        label={"Логин"}
       ></TextField>
       <TextField
         name="email"
@@ -59,6 +61,8 @@ const LoginStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.email}
+        margin="dense"
+        label={"Электронная почта"}
       ></TextField>
       <TextField
         name="password"
@@ -67,6 +71,8 @@ const LoginStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.password}
+        margin="dense"
+        label={"Пароль"}
       ></TextField>
       <TextField
         name="passwordRepet"
@@ -75,6 +81,8 @@ const LoginStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.passwordRepet}
+        margin="dense"
+        label={"Повторите пароль"}
       ></TextField>
     </LayoutStep>
   );

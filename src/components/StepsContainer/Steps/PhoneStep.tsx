@@ -7,7 +7,7 @@ import LayoutStep from "./LayoutStep";
 const PhoneStep = () => {
   const dispatch = useAppDispatch();
   const { form } = useAppSelector((store) => store.formState);
-  const { isActiveButtonCode, isActiveInput } = useAppSelector(
+  const { isDisabledButtonCode, isDisabledInput } = useAppSelector(
     (store) => store.formState
   );
 
@@ -31,26 +31,26 @@ const PhoneStep = () => {
   };
 
   const getCode = () => {
-    dispatch(formActions.isActiveInput());
+    dispatch(formActions.isNoDisabledInput());
   };
 
   // пока не знаю как правильно типизировать
   const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
-        dispatch(formActions.isNoActivButtonNext());
+        dispatch(formActions.isDisabledButtonNext());
         return;
       }
     }
-    dispatch(formActions.isActiveButtonNext());
+    dispatch(formActions.isNoDisabledButtonNext());
   };
 
   const checkRequiredPhone = (code: string) => {
     if (code === "") {
-      dispatch(formActions.isNoActivButtonCode());
+      dispatch(formActions.isDisabledButtonCode());
       return;
     }
-    dispatch(formActions.isActiveButtonCode());
+    dispatch(formActions.isNoDisabledButtonCode());
   };
 
   useEffect(() => {
@@ -70,12 +70,14 @@ const PhoneStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.phone}
+        margin="dense"
+        label={"Телефон"}
       ></TextField>
       <Button
         key="next"
         variant="contained"
         onClick={getCode}
-        disabled={isActiveButtonCode}
+        disabled={isDisabledButtonCode}
       >
         Получить код
       </Button>
@@ -86,7 +88,9 @@ const PhoneStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.code}
-        disabled={isActiveInput}
+        disabled={isDisabledInput}
+        margin="dense"
+        label={"Код"}
       ></TextField>
     </LayoutStep>
   );
