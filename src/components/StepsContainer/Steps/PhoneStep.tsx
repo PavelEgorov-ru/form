@@ -31,26 +31,26 @@ const PhoneStep = () => {
   };
 
   const getCode = () => {
-    dispatch(formActions.isDisabledInput());
+    dispatch(formActions.isNoDisabledInput());
   };
 
   // пока не знаю как правильно типизировать
   const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
-        dispatch(formActions.isNoDisabledButtonNext());
+        dispatch(formActions.isDisabledButtonNext());
         return;
       }
     }
-    dispatch(formActions.isDisabledButtonNext());
+    dispatch(formActions.isNoDisabledButtonNext());
   };
 
   const checkRequiredPhone = (code: string) => {
     if (code === "") {
-      dispatch(formActions.isNoDisabledButtonCode());
+      dispatch(formActions.isDisabledButtonCode());
       return;
     }
-    dispatch(formActions.isDisabledButtonCode());
+    dispatch(formActions.isNoDisabledButtonCode());
   };
 
   useEffect(() => {

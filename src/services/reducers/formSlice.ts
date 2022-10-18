@@ -47,22 +47,22 @@ const formSlice = createSlice({
       console.log(action.payload);
       state.form = { ...state.form, ...action.payload };
     },
-    isDisabledButtonNext(state) {
+    isNoDisabledButtonNext(state) {
       state.isDisabledButtonNext = false;
     },
-    isNoDisabledButtonNext(state) {
+    isDisabledButtonNext(state) {
       state.isDisabledButtonNext = true;
     },
-    isDisabledButtonCode(state) {
+    isNoDisabledButtonCode(state) {
       state.isDisabledButtonCode = false;
     },
-    isNoDisabledButtonCode(state) {
+    isDisabledButtonCode(state) {
       state.isDisabledButtonCode = true;
     },
-    isDisabledInput(state) {
+    isNoDisabledInput(state) {
       state.isDisabledInput = false;
     },
-    isNoDisabledInput(state) {
+    isDisabledInput(state) {
       state.isDisabledInput = true;
     },
     resetForm(state) {
