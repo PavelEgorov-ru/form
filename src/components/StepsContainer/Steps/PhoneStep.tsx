@@ -70,6 +70,8 @@ const PhoneStep = () => {
         required
         onChange={(e) => changeInput(e)}
         value={form.phone}
+        margin="dense"
+        label={"Телефон"}
       ></TextField>
       <Button
         key="next"
@@ -87,6 +89,8 @@ const PhoneStep = () => {
         onChange={(e) => changeInput(e)}
         value={form.code}
         disabled={isDisabledInput}
+        margin="dense"
+        label={"Код"}
       ></TextField>
     </LayoutStep>
   );

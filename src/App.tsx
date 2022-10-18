@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "./hooks";
 import { formActions } from "./services/reducers";
 
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 
 import StepContainer from "./components/StepsContainer";
 
@@ -15,7 +15,17 @@ function App() {
   }, []);
 
   return (
-    <Container>
+    <Container sx={{ marginTop: "30px" }}>
+      <Typography
+        component="h1"
+        sx={{
+          marginTop: "20px",
+          marginBottom: "20px",
+          textAlign: "center",
+        }}
+      >
+        Форма регистрации с последовательными шагами
+      </Typography>
       <StepContainer />
     </Container>
   );
