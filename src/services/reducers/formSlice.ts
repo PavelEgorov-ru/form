@@ -16,7 +16,7 @@ const initialState: TFormState = {
     phone: "",
     code: "",
   },
-  isActiveButtonNext: true,
+  isDisabledButtonNext: true,
   isActiveButtonCode: true,
   isActiveInput: true,
 };
@@ -34,7 +34,7 @@ const formSlice = createSlice({
     nextStep(state) {
       if (state.form.stepCount !== 2) {
         state.form.stepCount += 1;
-        state.isActiveButtonNext = true;
+        state.isDisabledButtonNext = true;
         localStorage.setItem("formState", JSON.stringify(state.form));
       } else {
         state.form.stepCount = 0;
@@ -47,11 +47,11 @@ const formSlice = createSlice({
       console.log(action.payload);
       state.form = { ...state.form, ...action.payload };
     },
-    isActiveButtonNext(state) {
-      state.isActiveButtonNext = false;
+    isDisabledButtonNext(state) {
+      state.isDisabledButtonNext = false;
     },
-    isNoActivButtonNext(state) {
-      state.isActiveButtonNext = true;
+    isNoDisabledButtonNext(state) {
+      state.isDisabledButtonNext = true;
     },
     isActiveButtonCode(state) {
       state.isActiveButtonCode = false;
@@ -77,7 +77,7 @@ const formSlice = createSlice({
       state.form.house = "";
       state.form.phone = "";
       state.form.code = "";
-      state.isActiveButtonNext = true;
+      state.isDisabledButtonNext = true;
       state.isActiveButtonCode = true;
       state.isActiveInput = true;
       localStorage.clear();
