@@ -32,11 +32,11 @@ const LoginStep = () => {
   const checkRequired = (obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
-        dispatch(formActions.isNoActivButtonNext());
+        dispatch(formActions.isNoDisabledButtonNext());
         return;
       }
     }
-    dispatch(formActions.isActiveButtonNext());
+    dispatch(formActions.isDisabledButtonNext());
   };
 
   useEffect(() => {
