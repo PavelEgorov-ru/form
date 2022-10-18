@@ -18,7 +18,7 @@ const initialState: TFormState = {
   },
   isDisabledButtonNext: true,
   isDisabledButtonCode: true,
-  isActiveInput: true,
+  isDisabledInput: true,
 };
 
 const formSlice = createSlice({
@@ -59,11 +59,11 @@ const formSlice = createSlice({
     isNoDisabledButtonCode(state) {
       state.isDisabledButtonCode = true;
     },
-    isActiveInput(state) {
-      state.isActiveInput = false;
+    isDisabledInput(state) {
+      state.isDisabledInput = false;
     },
-    isNoActivInput(state) {
-      state.isActiveInput = true;
+    isNoDisabledInput(state) {
+      state.isDisabledInput = true;
     },
     resetForm(state) {
       state.form.stepCount = 0;
@@ -79,7 +79,7 @@ const formSlice = createSlice({
       state.form.code = "";
       state.isDisabledButtonNext = true;
       state.isDisabledButtonCode = true;
-      state.isActiveInput = true;
+      state.isDisabledInput = true;
       localStorage.clear();
     },
   },
