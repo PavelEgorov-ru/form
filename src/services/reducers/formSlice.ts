@@ -17,7 +17,7 @@ const initialState: TFormState = {
     code: "",
   },
   isDisabledButtonNext: true,
-  isActiveButtonCode: true,
+  isDisabledButtonCode: true,
   isActiveInput: true,
 };
 
@@ -53,11 +53,11 @@ const formSlice = createSlice({
     isNoDisabledButtonNext(state) {
       state.isDisabledButtonNext = true;
     },
-    isActiveButtonCode(state) {
-      state.isActiveButtonCode = false;
+    isDisabledButtonCode(state) {
+      state.isDisabledButtonCode = false;
     },
-    isNoActivButtonCode(state) {
-      state.isActiveButtonCode = true;
+    isNoDisabledButtonCode(state) {
+      state.isDisabledButtonCode = true;
     },
     isActiveInput(state) {
       state.isActiveInput = false;
@@ -78,7 +78,7 @@ const formSlice = createSlice({
       state.form.phone = "";
       state.form.code = "";
       state.isDisabledButtonNext = true;
-      state.isActiveButtonCode = true;
+      state.isDisabledButtonCode = true;
       state.isActiveInput = true;
       localStorage.clear();
     },
