@@ -3,10 +3,10 @@ export type TFormState = {
   isDisabledButtonNext: boolean;
   isDisabledButtonCode: boolean;
   isDisabledInput: boolean;
+  stepCount: number;
 };
 
 export type TForm = {
-  stepCount: number;
   login: string;
   email: string;
   password: string;
