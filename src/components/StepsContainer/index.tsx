@@ -10,7 +10,6 @@ const steps = ["Логин и пароль", "Где проживаете", "Н�
 
 const StepContainer = React.memo(() => {
   const { stepCount } = useAppSelector((store) => store.formState);
-  console.log("render главного блока");
   return (
     <Box component="form" sx={{ width: "100%" }}>
       <Stepper activeStep={stepCount}>
