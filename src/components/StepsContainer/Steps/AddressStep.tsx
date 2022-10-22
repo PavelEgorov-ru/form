@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback, FC } from "react";
 import type { TStepBodyLAddress } from "../../../types";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { formActions } from "../../../services/reducers";
 import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
@@ -15,9 +13,6 @@ const AddressStep: FC<TStepBodyLAddress> = React.memo(
     stepCount,
     setIsDisabledButtonNext,
   }) => {
-    const dispatch = useAppDispatch();
-    // const { form } = useAppSelector((store) => store.formState);
-
     const [inputsRequired, setInputsRequired] = useState({
       country: country,
       city: city,

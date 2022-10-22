@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useCallback, FC } from "react";
 import type { TStepBodyPhone } from "../../../types";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { formActions } from "../../../services/reducers";
 import { Button } from "@mui/material";
 import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const PhoneStep: FC<TStepBodyPhone> = React.memo(
   ({ changeInputForm, phone, code, stepCount, setIsDisabledButtonNext }) => {
-    const dispatch = useAppDispatch();
-
     const [inputsRequired, setInputsRequired] = useState({
       phone: phone,
       code: code,

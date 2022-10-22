@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useAppSelector } from "../../hooks";
 
-import { Box, Button, ButtonGroup } from "@mui/material";
+import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
 import StepsButton from "./StepsButton";
 import AddressStep from "./Steps/AddressStep";
@@ -24,10 +24,6 @@ const StepContainer = () => {
     code: "",
   });
   const [isDisabledButtonNext, setIsDisabledButtonNext] = useState(true);
-
-  // isDisabledButtonNext: true,
-  // isDisabledButtonCode: true,
-  // isDisabledInput: true,
 
   const changeInputForm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
