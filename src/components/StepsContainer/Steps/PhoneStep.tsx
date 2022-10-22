@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
 import { formActions } from "../../../services/reducers";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import LayoutStep from "./LayoutStep";
+import InputTextField from "../../InputTextField";
 
 const PhoneStep = () => {
   const dispatch = useAppDispatch();
@@ -16,26 +17,29 @@ const PhoneStep = () => {
     code: form.code,
   });
 
-  const changeInput = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, required } = e.target;
-    dispatch(formActions.sendValue({ [name]: value }));
+  const changeInput = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { name, value, required } = e.target;
+      dispatch(formActions.sendValue({ [name]: value }));
 
-    if (required) {
-      setInputsRequired({
-        ...inputsRequired,
-        [name]: value,
-      });
-    }
-  };
+      if (required) {
+        setInputsRequired((prevState) => {
+          return {
+            ...prevState,
+            [name]: value,
+          };
+        });
+      }
+    },
+    []
+  );
 
   const getCode = () => {
     dispatch(formActions.isNoDisabledInput());
   };
 
   // пока не знаю как правильно типизировать
-  const checkRequired = (obj: any) => {
+  const checkRequired = useCallback((obj: any) => {
     for (const key in obj) {
       if (obj[key] === "") {
         dispatch(formActions.isDisabledButtonNext());
@@ -43,36 +47,36 @@ const PhoneStep = () => {
       }
     }
     dispatch(formActions.isNoDisabledButtonNext());
-  };
+  }, []);
 
-  const checkRequiredPhone = (code: string) => {
+  const checkRequiredPhone = useCallback((code: string) => {
     if (code === "") {
       dispatch(formActions.isDisabledButtonCode());
       return;
     }
     dispatch(formActions.isNoDisabledButtonCode());
-  };
+  }, []);
 
   useEffect(() => {
     checkRequired(inputsRequired);
-  }, [inputsRequired]);
+  }, [inputsRequired, checkRequired]);
 
   useEffect(() => {
     checkRequiredPhone(inputsRequired.phone);
-  }, [inputsRequired.phone]);
+  }, [inputsRequired.phone, checkRequiredPhone]);
 
   return (
     <LayoutStep>
-      <TextField
+      <InputTextField
         name="phone"
         placeholder="Телефон *"
         fullWidth
         required
-        onChange={(e) => changeInput(e)}
+        onChange={changeInput}
         value={form.phone}
         margin="dense"
         label={"Телефон"}
-      ></TextField>
+      ></InputTextField>
       <Button
         key="next"
         variant="contained"
@@ -81,17 +85,17 @@ const PhoneStep = () => {
       >
         Получить код
       </Button>
-      <TextField
+      <InputTextField
         name="code"
         placeholder="Введите полученый код *"
         fullWidth
         required
-        onChange={(e) => changeInput(e)}
+        onChange={changeInput}
         value={form.code}
         disabled={isDisabledInput}
         margin="dense"
         label={"Код"}
-      ></TextField>
+      ></InputTextField>
     </LayoutStep>
   );
 };

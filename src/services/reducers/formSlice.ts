@@ -4,7 +4,6 @@ import type { TFormState } from "./types";
 
 const initialState: TFormState = {
   form: {
-    stepCount: 0,
     login: "",
     email: "",
     password: "",
@@ -19,6 +18,7 @@ const initialState: TFormState = {
   isDisabledButtonNext: true,
   isDisabledButtonCode: true,
   isDisabledInput: true,
+  stepCount: 0,
 };
 
 const formSlice = createSlice({
@@ -32,22 +32,23 @@ const formSlice = createSlice({
       }
     },
     nextStep(state) {
-      if (state.form.stepCount !== 2) {
-        state.form.stepCount += 1;
+      if (state.stepCount !== 2) {
+        state.stepCount += 1;
         state.isDisabledButtonNext = true;
         localStorage.setItem("formState", JSON.stringify(state.form));
       } else {
-        state.form.stepCount = 0;
+        state.stepCount = 0;
       }
     },
     backStep(state) {
-      state.form.stepCount -= 1;
+      state.stepCount -= 1;
     },
     sendValue(state, action: PayloadAction<Partial<TFormState["form"]>>) {
       console.log(action.payload);
       state.form = { ...state.form, ...action.payload };
     },
     isNoDisabledButtonNext(state) {
+      console.log("111");
       state.isDisabledButtonNext = false;
     },
     isDisabledButtonNext(state) {
@@ -66,7 +67,7 @@ const formSlice = createSlice({
       state.isDisabledInput = true;
     },
     resetForm(state) {
-      state.form.stepCount = 0;
+      state.stepCount = 0;
       state.form.login = "";
       state.form.email = "";
       state.form.password = "";

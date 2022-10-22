@@ -1,3 +1,4 @@
+import React from "react";
 import { useAppSelector } from "../../hooks";
 
 import { Stepper, Step, StepLabel, Box } from "@mui/material";
@@ -7,9 +8,8 @@ import LoginStep from "./Steps/LoginStep";
 
 const steps = ["Логин и пароль", "Где проживаете", "Номер телефона"];
 
-const StepContainer = () => {
-  const { stepCount } = useAppSelector((store) => store.formState.form);
-
+const StepContainer = React.memo(() => {
+  const { stepCount } = useAppSelector((store) => store.formState);
   return (
     <Box component="form" sx={{ width: "100%" }}>
       <Stepper activeStep={stepCount}>
@@ -27,6 +27,6 @@ const StepContainer = () => {
       {stepCount === 2 && <PhoneStep />}
     </Box>
   );
-};
+});
 
 export default StepContainer;
