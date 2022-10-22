@@ -1,15 +1,15 @@
 import React, { useState, useCallback } from "react";
 import { useAppSelector } from "../../hooks";
 
-import { Box } from "@mui/material";
+import { Box, Button, ButtonGroup } from "@mui/material";
 import StepsHeader from "./StepsHeader";
+import StepsButton from "./StepsButton";
 import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
 import { formActions } from "../../services/reducers";
 
 const StepContainer = () => {
-  // const { stepCount } = useAppSelector((store) => store.formState);
   const [stateForm, setStateForm] = useState({
     stepCount: 2,
     login: "",
@@ -23,8 +23,6 @@ const StepContainer = () => {
     phone: "",
     code: "",
   });
-
-  console.log(stateForm);
 
   const changeInputForm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -94,6 +92,7 @@ const StepContainer = () => {
           stepCount={stateForm.stepCount}
         />
       )}
+      <StepsButton />
     </Box>
   );
 };
