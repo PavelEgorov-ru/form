@@ -8,6 +8,31 @@ export type TStepHeader = {
   stepCount: number;
 };
 
+type TstepBody = {
+  changeInputForm: TOnChange;
+  nextStep: () => void;
+  backStep: () => void;
+};
+
+export type TStepBodyLogin = TstepBody & {
+  login: string;
+  email: string;
+  password: string;
+  passwordRepet: string;
+};
+
+export type TStepBodyLAddress = TstepBody & {
+  country: string;
+  city: string;
+  street: string;
+  house: string;
+};
+
+export type TStepBodyPhone = TstepBody & {
+  phone: string;
+  code: string;
+};
+
 export type TInputMargin = "none" | "dense" | "normal" | undefined;
 
 export type TOnChange = (
