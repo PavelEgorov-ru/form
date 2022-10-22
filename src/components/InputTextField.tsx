@@ -13,6 +13,7 @@ const InputTextField: FC<TInputTextField> = React.memo(
     required,
     fullWidth,
     onChange,
+    disabled,
   }) => {
     return (
       <TextField
@@ -24,6 +25,7 @@ const InputTextField: FC<TInputTextField> = React.memo(
         required={required}
         fullWidth={fullWidth}
         onChange={(e) => onChange(e)}
+        disabled={disabled}
       />
     );
   }

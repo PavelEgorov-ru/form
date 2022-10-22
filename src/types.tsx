@@ -19,4 +19,5 @@ export type TInputTextField = {
   onChange: TOnChange;
   required?: boolean;
   fullWidth?: boolean;
+  disabled?: boolean;
 };
