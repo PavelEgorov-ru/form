@@ -4,6 +4,10 @@ export type TLayout = {
   children: ReactNode;
 };
 
+export type TStepHeader = {
+  stepCount: number;
+};
+
 export type TInputMargin = "none" | "dense" | "normal" | undefined;
 
 export type TOnChange = (
