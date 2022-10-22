@@ -9,11 +9,18 @@ export type TStepHeader = {
   stepCount: number;
 };
 
-type TStepBody = {
-  changeInputForm: TOnChange;
+export type TStepButton = {
   nextStep: TFunc;
   backStep: TFunc;
+  finishStep: TFunc;
+  isDisabledButtonNext: boolean;
   stepCount: number;
+};
+
+type TStepBody = {
+  changeInputForm: TOnChange;
+  stepCount: number;
+  setIsDisabledButtonNext: TChangeActive;
 };
 
 export type TStepBodyLogin = TStepBody & {
@@ -42,6 +49,8 @@ export type TOnChange = (
 ) => void;
 
 export type TFunc = () => void;
+
+export type TChangeActive = React.Dispatch<React.SetStateAction<boolean>>;
 
 export type TInputTextField = {
   name: string;

@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useCallback, FC } from "react";
 import type { TStepBodyLogin } from "../../../types";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { formActions } from "../../../services/reducers";
 import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const LoginStep: FC<TStepBodyLogin> = React.memo(
   ({
     changeInputForm,
-    nextStep,
-    backStep,
     login,
     email,
     password,
     passwordRepet,
     stepCount,
+    setIsDisabledButtonNext,
   }) => {
-    const dispatch = useAppDispatch();
-    // const { form } = useAppSelector((store) => store.formState);
-
     const [inputsRequired, setInputsRequired] = useState({
       email: email,
       password: password,
@@ -51,11 +45,11 @@ const LoginStep: FC<TStepBodyLogin> = React.memo(
     const checkRequired = useCallback((obj: any) => {
       for (const key in obj) {
         if (obj[key] === "") {
-          dispatch(formActions.isDisabledButtonNext());
+          setIsDisabledButtonNext(true);
           return;
         }
       }
-      dispatch(formActions.isNoDisabledButtonNext());
+      setIsDisabledButtonNext(false);
     }, []);
 
     useEffect(() => {

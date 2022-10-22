@@ -3,15 +3,15 @@ import { useAppSelector } from "../../hooks";
 
 import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
+import StepsButton from "./StepsButton";
 import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
 import { formActions } from "../../services/reducers";
 
 const StepContainer = () => {
-  // const { stepCount } = useAppSelector((store) => store.formState);
   const [stateForm, setStateForm] = useState({
-    stepCount: 2,
+    stepCount: 0,
     login: "",
     email: "",
     password: "",
@@ -23,8 +23,7 @@ const StepContainer = () => {
     phone: "",
     code: "",
   });
-
-  console.log(stateForm);
+  const [isDisabledButtonNext, setIsDisabledButtonNext] = useState(true);
 
   const changeInputForm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -57,43 +56,51 @@ const StepContainer = () => {
     });
   }, []);
 
+  const finishStep = useCallback(() => {
+    alert("отправка формы регистрации");
+  }, []);
+
   return (
     <Box component="form" sx={{ width: "100%" }}>
       <StepsHeader stepCount={stateForm.stepCount} />
       {stateForm.stepCount === 0 && (
         <LoginStep
           changeInputForm={changeInputForm}
-          nextStep={nextStep}
-          backStep={backStep}
           login={stateForm.login}
           email={stateForm.email}
           password={stateForm.password}
           passwordRepet={stateForm.passwordRepet}
           stepCount={stateForm.stepCount}
+          setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
       {stateForm.stepCount === 1 && (
         <AddressStep
           changeInputForm={changeInputForm}
-          nextStep={nextStep}
-          backStep={backStep}
           country={stateForm.country}
           city={stateForm.city}
           street={stateForm.street}
           house={stateForm.house}
           stepCount={stateForm.stepCount}
+          setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
       {stateForm.stepCount === 2 && (
         <PhoneStep
           changeInputForm={changeInputForm}
-          nextStep={nextStep}
-          backStep={backStep}
           phone={stateForm.phone}
           code={stateForm.code}
           stepCount={stateForm.stepCount}
+          setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
+      <StepsButton
+        nextStep={nextStep}
+        backStep={backStep}
+        finishStep={finishStep}
+        stepCount={stateForm.stepCount}
+        isDisabledButtonNext={isDisabledButtonNext}
+      />
     </Box>
   );
 };
