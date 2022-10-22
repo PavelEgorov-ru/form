@@ -7,7 +7,7 @@ import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
 
-const StepContainer = React.memo(() => {
+const StepContainer = () => {
   const { stepCount } = useAppSelector((store) => store.formState);
   return (
     <Box component="form" sx={{ width: "100%" }}>
@@ -17,6 +17,6 @@ const StepContainer = React.memo(() => {
       {stepCount === 2 && <PhoneStep />}
     </Box>
   );
-});
+};
 
 export default StepContainer;

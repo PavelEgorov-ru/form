@@ -44,11 +44,9 @@ const formSlice = createSlice({
       state.stepCount -= 1;
     },
     sendValue(state, action: PayloadAction<Partial<TFormState["form"]>>) {
-      console.log(action.payload);
       state.form = { ...state.form, ...action.payload };
     },
     isNoDisabledButtonNext(state) {
-      console.log("111");
       state.isDisabledButtonNext = false;
     },
     isDisabledButtonNext(state) {
