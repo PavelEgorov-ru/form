@@ -24,8 +24,6 @@ const StepContainer = () => {
     code: "",
   });
   const [isDisabledButtonNext, setIsDisabledButtonNext] = useState(true);
-  const [isDisabledButtonCode, setIsDisabledButtonCode] = useState(true);
-  const [isDisabledInput, setIsDisabledInput] = useState(true);
 
   // isDisabledButtonNext: true,
   // isDisabledButtonCode: true,
@@ -97,8 +95,6 @@ const StepContainer = () => {
           phone={stateForm.phone}
           code={stateForm.code}
           stepCount={stateForm.stepCount}
-          isDisabledButtonCode={isDisabledButtonCode}
-          isDisabledInput={isDisabledInput}
           setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}

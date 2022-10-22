@@ -40,8 +40,6 @@ export type TStepBodyLAddress = TStepBody & {
 export type TStepBodyPhone = TStepBody & {
   phone: string;
   code: string;
-  isDisabledButtonCode: boolean;
-  isDisabledInput: boolean;
 };
 
 export type TInputMargin = "none" | "dense" | "normal" | undefined;

@@ -7,25 +7,15 @@ import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const PhoneStep: FC<TStepBodyPhone> = React.memo(
-  ({
-    changeInputForm,
-    phone,
-    code,
-    stepCount,
-    isDisabledButtonCode,
-    isDisabledInput,
-    setIsDisabledButtonNext,
-  }) => {
+  ({ changeInputForm, phone, code, stepCount, setIsDisabledButtonNext }) => {
     const dispatch = useAppDispatch();
-    const { form } = useAppSelector((store) => store.formState);
-    // const { isDisabledButtonCode, isDisabledInput } = useAppSelector(
-    //   (store) => store.formState
-    // );
 
     const [inputsRequired, setInputsRequired] = useState({
       phone: phone,
       code: code,
     });
+    const [isDisabledButtonCode, setIsDisabledButtonCode] = useState(true);
+    const [isDisabledInput, setIsDisabledInput] = useState(true);
 
     const sendToState = useCallback(
       (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,7 +42,7 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
     );
 
     const getCode = () => {
-      dispatch(formActions.isNoDisabledInput());
+      setIsDisabledInput(false);
     };
 
     // пока не знаю как правильно типизировать
@@ -68,10 +58,10 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
 
     const checkRequiredPhone = useCallback((code: string) => {
       if (code === "") {
-        dispatch(formActions.isDisabledButtonCode());
+        setIsDisabledButtonCode(true);
         return;
       }
-      dispatch(formActions.isNoDisabledButtonCode());
+      setIsDisabledButtonCode(false);
     }, []);
 
     useEffect(() => {
