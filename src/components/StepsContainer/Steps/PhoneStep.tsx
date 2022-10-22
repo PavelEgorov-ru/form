@@ -15,8 +15,8 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
     );
 
     const [inputsRequired, setInputsRequired] = useState({
-      phone: form.phone,
-      code: form.code,
+      phone: phone,
+      code: code,
     });
 
     const sendToState = useCallback(
@@ -82,7 +82,7 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
           fullWidth
           required
           onChange={sendToState}
-          value={form.phone}
+          value={phone}
           margin="dense"
           label={"Телефон"}
         ></InputTextField>
@@ -100,7 +100,7 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
           fullWidth
           required
           onChange={sendToState}
-          value={form.code}
+          value={code}
           disabled={isDisabledInput}
           margin="dense"
           label={"Код"}

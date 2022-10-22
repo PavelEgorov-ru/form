@@ -11,7 +11,7 @@ import { formActions } from "../../services/reducers";
 const StepContainer = () => {
   // const { stepCount } = useAppSelector((store) => store.formState);
   const [stateForm, setStateForm] = useState({
-    stepCount: 0,
+    stepCount: 2,
     login: "",
     email: "",
     password: "",
@@ -24,7 +24,7 @@ const StepContainer = () => {
     code: "",
   });
 
-  console.log("htylth");
+  console.log(stateForm);
 
   const changeInputForm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
