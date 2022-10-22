@@ -9,28 +9,28 @@ export type TStepHeader = {
   stepCount: number;
 };
 
-type TstepBody = {
+type TStepBody = {
   changeInputForm: TOnChange;
   nextStep: TFunc;
   backStep: TFunc;
   stepCount: number;
 };
 
-export type TStepBodyLogin = TstepBody & {
+export type TStepBodyLogin = TStepBody & {
   login: string;
   email: string;
   password: string;
   passwordRepet: string;
 };
 
-export type TStepBodyLAddress = TstepBody & {
+export type TStepBodyLAddress = TStepBody & {
   country: string;
   city: string;
   street: string;
   house: string;
 };
 
-export type TStepBodyPhone = TstepBody & {
+export type TStepBodyPhone = TStepBody & {
   phone: string;
   code: string;
 };

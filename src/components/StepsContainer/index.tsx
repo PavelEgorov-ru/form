@@ -71,8 +71,19 @@ const StepContainer = () => {
           stepCount={stateForm.stepCount}
         />
       )}
-      {/* {stateForm.stepCount === 1 && <AddressStep />}
-      {stateForm.stepCount === 2 && <PhoneStep />} */}
+      {stateForm.stepCount === 1 && (
+        <AddressStep
+          changeInputForm={changeInputForm}
+          nextStep={nextStep}
+          backStep={backStep}
+          country={stateForm.country}
+          city={stateForm.city}
+          street={stateForm.street}
+          house={stateForm.house}
+          stepCount={stateForm.stepCount}
+        />
+      )}
+      {stateForm.stepCount === 2 && <PhoneStep />}
     </Box>
   );
 };
