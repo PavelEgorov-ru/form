@@ -13,6 +13,7 @@ export type TStepButton = {
   nextStep: TFunc;
   backStep: TFunc;
   finishStep: TFunc;
+  isDisabledButtonNext: boolean;
   stepCount: number;
 };
 

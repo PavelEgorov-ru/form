@@ -23,6 +23,12 @@ const StepContainer = () => {
     phone: "",
     code: "",
   });
+  const [isDisabledButtonNext, setIsDisabledButtonNext] = useState(true);
+  const [isDisabledButtonCode, setIsDisabledButtonCode] = useState(true);
+
+  // isDisabledButtonNext: true,
+  // isDisabledButtonCode: true,
+  // isDisabledInput: true,
 
   const changeInputForm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -95,6 +101,7 @@ const StepContainer = () => {
         backStep={backStep}
         finishStep={finishStep}
         stepCount={stateForm.stepCount}
+        isDisabledButtonNext={isDisabledButtonNext}
       />
     </Box>
   );

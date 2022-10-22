@@ -3,13 +3,15 @@ import type { TStepButton } from "../../types";
 import { Button, ButtonGroup } from "@mui/material";
 
 const StepsButton: FC<TStepButton> = React.memo(
-  ({ nextStep, backStep, finishStep, stepCount }) => {
+  ({ nextStep, backStep, finishStep, stepCount, isDisabledButtonNext }) => {
+    const isActiveButtonBack: boolean = stepCount === 0 ? true : false;
+
     const buttons = [
       <Button
         key="back"
         variant="text"
         onClick={backStep}
-        // disabled={isActiveButtonBack}
+        disabled={isActiveButtonBack}
       >
         Назад
       </Button>,
@@ -17,7 +19,7 @@ const StepsButton: FC<TStepButton> = React.memo(
         key="next"
         variant="contained"
         onClick={stepCount === 2 ? finishStep : nextStep}
-        // disabled={isDisabledButtonNext}
+        disabled={isDisabledButtonNext}
       >
         {stepCount === 2 ? "Отправить" : "Продолжить"}
       </Button>,
