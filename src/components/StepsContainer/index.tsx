@@ -23,6 +23,8 @@ const StepContainer = () => {
     code: "",
   });
 
+  console.log("htylth");
+
   const changeInputForm = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -57,9 +59,20 @@ const StepContainer = () => {
   return (
     <Box component="form" sx={{ width: "100%" }}>
       <StepsHeader stepCount={stateForm.stepCount} />
-      {stateForm.stepCount === 0 && <LoginStep />}
-      {stateForm.stepCount === 1 && <AddressStep />}
-      {stateForm.stepCount === 2 && <PhoneStep />}
+      {stateForm.stepCount === 0 && (
+        <LoginStep
+          changeInputForm={changeInputForm}
+          nextStep={nextStep}
+          backStep={backStep}
+          login={stateForm.login}
+          email={stateForm.email}
+          password={stateForm.password}
+          passwordRepet={stateForm.passwordRepet}
+          stepCount={stateForm.stepCount}
+        />
+      )}
+      {/* {stateForm.stepCount === 1 && <AddressStep />}
+      {stateForm.stepCount === 2 && <PhoneStep />} */}
     </Box>
   );
 };

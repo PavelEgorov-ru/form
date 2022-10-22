@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export type TLayout = {
   children: ReactNode;
+  stepCount: number;
 };
 
 export type TStepHeader = {
@@ -10,8 +11,9 @@ export type TStepHeader = {
 
 type TstepBody = {
   changeInputForm: TOnChange;
-  nextStep: () => void;
-  backStep: () => void;
+  nextStep: TFunc;
+  backStep: TFunc;
+  stepCount: number;
 };
 
 export type TStepBodyLogin = TstepBody & {
@@ -38,6 +40,8 @@ export type TInputMargin = "none" | "dense" | "normal" | undefined;
 export type TOnChange = (
   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 ) => void;
+
+export type TFunc = () => void;
 
 export type TInputTextField = {
   name: string;

@@ -4,11 +4,9 @@ import { formActions } from "../../../services/reducers";
 import type { TLayout } from "../../../types";
 import { Card, Button, Box, ButtonGroup } from "@mui/material";
 
-const LayoutStep: FC<TLayout> = ({ children }) => {
+const LayoutStep: FC<TLayout> = React.memo(({ children, stepCount }) => {
   const dispatch = useAppDispatch();
-  const { stepCount } = useAppSelector((store) => store.formState);
   const { isDisabledButtonNext } = useAppSelector((store) => store.formState);
-
   const isActiveButtonBack: boolean = stepCount === 0 ? true : false;
 
   const next: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -65,6 +63,6 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
       </Box>
     </Card>
   );
-};
+});
 
 export default LayoutStep;
