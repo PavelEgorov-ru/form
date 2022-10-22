@@ -36,6 +36,24 @@ const StepContainer = () => {
     []
   );
 
+  const nextStep = useCallback(() => {
+    setStateForm((prevState) => {
+      return {
+        ...prevState,
+        stepCount: prevState.stepCount + 1,
+      };
+    });
+  }, []);
+
+  const backStep = useCallback(() => {
+    setStateForm((prevState) => {
+      return {
+        ...prevState,
+        stepCount: prevState.stepCount - 1,
+      };
+    });
+  }, []);
+
   return (
     <Box component="form" sx={{ width: "100%" }}>
       <StepsHeader stepCount={stateForm.stepCount} />
