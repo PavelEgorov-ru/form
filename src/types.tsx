@@ -12,6 +12,8 @@ export type TStepHeader = {
 export type TStepButton = {
   nextStep: TFunc;
   backStep: TFunc;
+  finishStep: TFunc;
+  stepCount: number;
 };
 
 type TStepBody = {

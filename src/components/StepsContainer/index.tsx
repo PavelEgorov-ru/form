@@ -55,6 +55,10 @@ const StepContainer = () => {
     });
   }, []);
 
+  const finishStep = useCallback(() => {
+    alert("отправка формы регистрации");
+  }, []);
+
   return (
     <Box component="form" sx={{ width: "100%" }}>
       <StepsHeader stepCount={stateForm.stepCount} />
@@ -86,7 +90,12 @@ const StepContainer = () => {
           stepCount={stateForm.stepCount}
         />
       )}
-      <StepsButton />
+      <StepsButton
+        nextStep={nextStep}
+        backStep={backStep}
+        finishStep={finishStep}
+        stepCount={stateForm.stepCount}
+      />
     </Box>
   );
 };
