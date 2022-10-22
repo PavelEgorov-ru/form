@@ -4,44 +4,42 @@ import { formActions } from "../../../services/reducers";
 import type { TLayout } from "../../../types";
 import { Card, Button, Box, ButtonGroup } from "@mui/material";
 
-const LayoutStep: FC<TLayout> = ({ children }) => {
-  const dispatch = useAppDispatch();
-  const { stepCount } = useAppSelector((store) => store.formState);
-  const { isDisabledButtonNext } = useAppSelector((store) => store.formState);
+const LayoutStep: FC<TLayout> = React.memo(({ children, stepCount }) => {
+  // const dispatch = useAppDispatch();
+  // const { isDisabledButtonNext } = useAppSelector((store) => store.formState);
+  // const isActiveButtonBack: boolean = stepCount === 0 ? true : false;
 
-  const isActiveButtonBack: boolean = stepCount === 0 ? true : false;
+  // const next: React.MouseEventHandler<HTMLButtonElement> = () => {
+  //   dispatch(formActions.nextStep());
+  // };
 
-  const next: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(formActions.nextStep());
-  };
+  // const back: React.MouseEventHandler<HTMLButtonElement> = () => {
+  //   dispatch(formActions.backStep());
+  // };
 
-  const back: React.MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(formActions.backStep());
-  };
+  // const finish: React.MouseEventHandler<HTMLButtonElement> = () => {
+  //   alert("конец");
+  //   dispatch(formActions.resetForm());
+  // };
 
-  const finish: React.MouseEventHandler<HTMLButtonElement> = () => {
-    alert("конец");
-    dispatch(formActions.resetForm());
-  };
-
-  const buttons = [
-    <Button
-      key="back"
-      variant="text"
-      onClick={back}
-      disabled={isActiveButtonBack}
-    >
-      Назад
-    </Button>,
-    <Button
-      key="next"
-      variant="contained"
-      onClick={stepCount === 2 ? finish : next}
-      disabled={isDisabledButtonNext}
-    >
-      {stepCount === 2 ? "Отправить" : "Продолжить"}
-    </Button>,
-  ];
+  // const buttons = [
+  //   <Button
+  //     key="back"
+  //     variant="text"
+  //     onClick={back}
+  //     disabled={isActiveButtonBack}
+  //   >
+  //     Назад
+  //   </Button>,
+  //   <Button
+  //     key="next"
+  //     variant="contained"
+  //     onClick={stepCount === 2 ? finish : next}
+  //     disabled={isDisabledButtonNext}
+  //   >
+  //     {stepCount === 2 ? "Отправить" : "Продолжить"}
+  //   </Button>,
+  // ];
 
   return (
     <Card
@@ -51,7 +49,7 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
       }}
     >
       {children}
-      <Box>
+      {/* <Box>
         <ButtonGroup
           sx={{
             display: "flex",
@@ -62,9 +60,9 @@ const LayoutStep: FC<TLayout> = ({ children }) => {
         >
           {buttons}
         </ButtonGroup>
-      </Box>
+      </Box> */}
     </Card>
   );
-};
+});
 
 export default LayoutStep;
