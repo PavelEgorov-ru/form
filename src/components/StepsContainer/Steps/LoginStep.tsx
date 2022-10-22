@@ -6,7 +6,15 @@ import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const LoginStep: FC<TStepBodyLogin> = React.memo(
-  ({ changeInputForm, login, email, password, passwordRepet, stepCount }) => {
+  ({
+    changeInputForm,
+    login,
+    email,
+    password,
+    passwordRepet,
+    stepCount,
+    setIsDisabledButtonNext,
+  }) => {
     const dispatch = useAppDispatch();
     // const { form } = useAppSelector((store) => store.formState);
 
@@ -42,11 +50,11 @@ const LoginStep: FC<TStepBodyLogin> = React.memo(
     const checkRequired = useCallback((obj: any) => {
       for (const key in obj) {
         if (obj[key] === "") {
-          dispatch(formActions.isDisabledButtonNext());
+          setIsDisabledButtonNext(true);
           return;
         }
       }
-      dispatch(formActions.isNoDisabledButtonNext());
+      setIsDisabledButtonNext(false);
     }, []);
 
     useEffect(() => {

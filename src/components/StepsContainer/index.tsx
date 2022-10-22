@@ -11,7 +11,7 @@ import { formActions } from "../../services/reducers";
 
 const StepContainer = () => {
   const [stateForm, setStateForm] = useState({
-    stepCount: 2,
+    stepCount: 0,
     login: "",
     email: "",
     password: "",
@@ -77,6 +77,7 @@ const StepContainer = () => {
           password={stateForm.password}
           passwordRepet={stateForm.passwordRepet}
           stepCount={stateForm.stepCount}
+          setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
       {stateForm.stepCount === 1 && (
@@ -87,6 +88,7 @@ const StepContainer = () => {
           street={stateForm.street}
           house={stateForm.house}
           stepCount={stateForm.stepCount}
+          setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
       {stateForm.stepCount === 2 && (
@@ -97,6 +99,7 @@ const StepContainer = () => {
           stepCount={stateForm.stepCount}
           isDisabledButtonCode={isDisabledButtonCode}
           isDisabledInput={isDisabledInput}
+          setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
       <StepsButton

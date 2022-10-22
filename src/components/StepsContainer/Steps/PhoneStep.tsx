@@ -14,6 +14,7 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
     stepCount,
     isDisabledButtonCode,
     isDisabledInput,
+    setIsDisabledButtonNext,
   }) => {
     const dispatch = useAppDispatch();
     const { form } = useAppSelector((store) => store.formState);
@@ -58,11 +59,11 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
     const checkRequired = useCallback((obj: any) => {
       for (const key in obj) {
         if (obj[key] === "") {
-          dispatch(formActions.isDisabledButtonNext());
+          setIsDisabledButtonNext(true);
           return;
         }
       }
-      dispatch(formActions.isNoDisabledButtonNext());
+      setIsDisabledButtonNext(false);
     }, []);
 
     const checkRequiredPhone = useCallback((code: string) => {
