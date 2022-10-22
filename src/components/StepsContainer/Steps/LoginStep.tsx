@@ -20,9 +20,11 @@ const LoginStep = () => {
       dispatch(formActions.sendValue({ [name]: value }));
 
       if (required) {
-        setInputsRequired({
-          ...inputsRequired,
-          [name]: value,
+        setInputsRequired((prevState) => {
+          return {
+            ...prevState,
+            [name]: value,
+          };
         });
       }
     },
@@ -30,6 +32,7 @@ const LoginStep = () => {
   );
 
   const checkRequired = useCallback((obj: any) => {
+    console.log("вызов функции");
     for (const key in obj) {
       if (obj[key] === "") {
         dispatch(formActions.isDisabledButtonNext());
@@ -42,6 +45,7 @@ const LoginStep = () => {
   useEffect(() => {
     console.log("сработал useEffect");
     checkRequired(inputsRequired);
+    console.log(inputsRequired);
   }, [inputsRequired, checkRequired]);
 
   return (

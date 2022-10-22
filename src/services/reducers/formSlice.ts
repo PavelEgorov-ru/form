@@ -48,6 +48,7 @@ const formSlice = createSlice({
       state.form = { ...state.form, ...action.payload };
     },
     isNoDisabledButtonNext(state) {
+      console.log("111");
       state.isDisabledButtonNext = false;
     },
     isDisabledButtonNext(state) {
