@@ -35,8 +35,6 @@ const AddressStep: FC<TStepBodyLAddress> = React.memo(
     const changeInput = useCallback(
       (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value, required } = e.target;
-        dispatch(formActions.sendValue({ [name]: value }));
-
         if (required) {
           setInputsRequired((prevState) => {
             return {

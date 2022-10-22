@@ -6,6 +6,7 @@ import StepsHeader from "./StepsHeader";
 import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
+import { formActions } from "../../services/reducers";
 
 const StepContainer = () => {
   // const { stepCount } = useAppSelector((store) => store.formState);
@@ -83,7 +84,16 @@ const StepContainer = () => {
           stepCount={stateForm.stepCount}
         />
       )}
-      {stateForm.stepCount === 2 && <PhoneStep />}
+      {stateForm.stepCount === 2 && (
+        <PhoneStep
+          changeInputForm={changeInputForm}
+          nextStep={nextStep}
+          backStep={backStep}
+          phone={stateForm.phone}
+          code={stateForm.code}
+          stepCount={stateForm.stepCount}
+        />
+      )}
     </Box>
   );
 };
