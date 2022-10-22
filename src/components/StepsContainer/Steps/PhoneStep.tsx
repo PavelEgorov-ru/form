@@ -7,12 +7,19 @@ import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const PhoneStep: FC<TStepBodyPhone> = React.memo(
-  ({ changeInputForm, phone, code, stepCount }) => {
+  ({
+    changeInputForm,
+    phone,
+    code,
+    stepCount,
+    isDisabledButtonCode,
+    isDisabledInput,
+  }) => {
     const dispatch = useAppDispatch();
     const { form } = useAppSelector((store) => store.formState);
-    const { isDisabledButtonCode, isDisabledInput } = useAppSelector(
-      (store) => store.formState
-    );
+    // const { isDisabledButtonCode, isDisabledInput } = useAppSelector(
+    //   (store) => store.formState
+    // );
 
     const [inputsRequired, setInputsRequired] = useState({
       phone: phone,
