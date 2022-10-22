@@ -6,16 +6,7 @@ import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const AddressStep: FC<TStepBodyLAddress> = React.memo(
-  ({
-    changeInputForm,
-    nextStep,
-    backStep,
-    country,
-    city,
-    street,
-    house,
-    stepCount,
-  }) => {
+  ({ changeInputForm, country, city, street, house, stepCount }) => {
     const dispatch = useAppDispatch();
     // const { form } = useAppSelector((store) => store.formState);
 

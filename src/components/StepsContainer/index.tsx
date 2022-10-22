@@ -61,8 +61,6 @@ const StepContainer = () => {
       {stateForm.stepCount === 0 && (
         <LoginStep
           changeInputForm={changeInputForm}
-          nextStep={nextStep}
-          backStep={backStep}
           login={stateForm.login}
           email={stateForm.email}
           password={stateForm.password}
@@ -73,8 +71,6 @@ const StepContainer = () => {
       {stateForm.stepCount === 1 && (
         <AddressStep
           changeInputForm={changeInputForm}
-          nextStep={nextStep}
-          backStep={backStep}
           country={stateForm.country}
           city={stateForm.city}
           street={stateForm.street}
@@ -85,8 +81,6 @@ const StepContainer = () => {
       {stateForm.stepCount === 2 && (
         <PhoneStep
           changeInputForm={changeInputForm}
-          nextStep={nextStep}
-          backStep={backStep}
           phone={stateForm.phone}
           code={stateForm.code}
           stepCount={stateForm.stepCount}

@@ -9,10 +9,13 @@ export type TStepHeader = {
   stepCount: number;
 };
 
-type TStepBody = {
-  changeInputForm: TOnChange;
+export type TStepButton = {
   nextStep: TFunc;
   backStep: TFunc;
+};
+
+type TStepBody = {
+  changeInputForm: TOnChange;
   stepCount: number;
 };
 

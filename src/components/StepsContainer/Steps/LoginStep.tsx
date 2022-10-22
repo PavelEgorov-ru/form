@@ -6,16 +6,7 @@ import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const LoginStep: FC<TStepBodyLogin> = React.memo(
-  ({
-    changeInputForm,
-    nextStep,
-    backStep,
-    login,
-    email,
-    password,
-    passwordRepet,
-    stepCount,
-  }) => {
+  ({ changeInputForm, login, email, password, passwordRepet, stepCount }) => {
     const dispatch = useAppDispatch();
     // const { form } = useAppSelector((store) => store.formState);
 
