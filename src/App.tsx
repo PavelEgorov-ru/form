@@ -1,14 +1,8 @@
-import { useEffect } from "react";
-import { useAppDispatch } from "./hooks";
-import { formActions } from "./services/reducers";
-
-import { Container, Typography } from "@mui/material";
-
-import StepContainer from "./components/StepsContainer";
 import { TBaseStateForm } from "./types";
+import { Container, Typography } from "@mui/material";
+import StepContainer from "./components/StepsContainer";
 
 function App() {
-  const dispatch = useAppDispatch();
   const state: TBaseStateForm = {
     stepCount: 0,
     login: "",
@@ -24,11 +18,6 @@ function App() {
   };
 
   const localState: string | null = localStorage.getItem("formState");
-  // useEffect(() => {
-  //   if (localState !== null) {
-  //     const obj: any = JSON.parse(localState);
-  //   }
-  // }, []);
 
   return (
     <Container sx={{ marginTop: "30px" }}>

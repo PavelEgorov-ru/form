@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect, FC } from "react";
-import { useAppDispatch } from "../../hooks";
 import type { TBaseStateForm, TStepContainer } from "../../types";
 import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
@@ -67,7 +66,6 @@ const StepContainer: FC<TStepContainer> = ({ state }) => {
   }, []);
 
   useEffect(() => {
-    console.log("стейт формы", stateForm);
     localStorage.setItem("formState", JSON.stringify(stateForm));
   }, [stateForm.stepCount]);
 
