@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, FC } from "react";
-import type { TBaseStateForm, TStepContainer } from "../../types";
+import type { TBaseStateForm, TStepContainer, TonClickBtn } from "../../types";
 
 import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
@@ -41,7 +41,7 @@ const StepContainer: FC<TStepContainer> = React.memo(({ state }) => {
     []
   );
 
-  const nextStep = useCallback(() => {
+  const nextStep: TonClickBtn = useCallback(() => {
     setStateForm((prevState) => {
       return {
         ...prevState,
@@ -50,7 +50,7 @@ const StepContainer: FC<TStepContainer> = React.memo(({ state }) => {
     });
   }, []);
 
-  const backStep = useCallback(() => {
+  const backStep: TonClickBtn = useCallback(() => {
     setStateForm((prevState) => {
       return {
         ...prevState,
@@ -59,7 +59,7 @@ const StepContainer: FC<TStepContainer> = React.memo(({ state }) => {
     });
   }, []);
 
-  const finishStep = useCallback(() => {
+  const finishStep: TonClickBtn = useCallback(() => {
     alert("отправка формы регистрации");
     setStateForm({
       ...resetState,

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+// типы для лейфутов и блоков с шагами
 export type TStepContainer = {
   state: TBaseStateForm;
 };
@@ -14,9 +15,9 @@ export type TStepHeader = {
 };
 
 export type TStepButton = {
-  nextStep: TFunc;
-  backStep: TFunc;
-  finishStep: TFunc;
+  nextStep: TonClickBtn;
+  backStep: TonClickBtn;
+  finishStep: TonClickBtn;
   isDisabledButtonNext: boolean;
   stepCount: number;
 };
@@ -46,16 +47,18 @@ export type TStepBodyPhone = TStepBody & {
   code: string;
 };
 
-export type TInputMargin = "none" | "dense" | "normal" | undefined;
+// типы для функций
+export type TFunc = () => void;
 
 export type TOnChange = (
   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 ) => void;
 
-export type TFunc = () => void;
+export type TonClickBtn = React.MouseEventHandler<HTMLButtonElement>;
 
 export type TChangeActive = React.Dispatch<React.SetStateAction<boolean>>;
 
+// типы для комопнентов
 export type TInputTextField = {
   name: string;
   placeholder: string;
@@ -81,3 +84,5 @@ export type TBaseStateForm = {
   phone: string;
   code: string;
 };
+
+export type TInputMargin = "none" | "dense" | "normal" | undefined;
