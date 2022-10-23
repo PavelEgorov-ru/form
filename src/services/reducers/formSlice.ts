@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import type { TFormState } from "./types";
+import type { TBaseStateForm } from "../../types";
 
 const initialState: TFormState = {
   form: {
@@ -31,13 +32,12 @@ const formSlice = createSlice({
         state.form = { ...form };
       }
     },
-    nextStep(state) {
+    nextStep(state, action: PayloadAction<TBaseStateForm>) {
       if (state.stepCount !== 2) {
-        state.stepCount += 1;
-        state.isDisabledButtonNext = true;
-        localStorage.setItem("formState", JSON.stringify(state.form));
+        console.log(action.payload);
+        localStorage.setItem("formState", JSON.stringify(action.payload));
       } else {
-        state.stepCount = 0;
+        localStorage.removeItem("formState");
       }
     },
     backStep(state) {

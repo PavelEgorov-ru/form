@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
-import { useAppSelector } from "../../hooks";
-import type { TBaseStateForm } from "../../types";
+import React, { useState, useCallback, useEffect, FC } from "react";
+import { useAppDispatch } from "../../hooks";
+import type { TBaseStateForm, TStepContainer } from "../../types";
 import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
 import StepsButton from "./StepsButton";
@@ -8,8 +8,8 @@ import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
 
-const StepContainer = () => {
-  const baseStateForm: TBaseStateForm = {
+const StepContainer: FC<TStepContainer> = ({ state }) => {
+  const resetState: TBaseStateForm = {
     stepCount: 0,
     login: "",
     email: "",
@@ -23,7 +23,7 @@ const StepContainer = () => {
     code: "",
   };
   const [stateForm, setStateForm] = useState({
-    ...baseStateForm,
+    ...state,
   });
   const [isDisabledButtonNext, setIsDisabledButtonNext] = useState(true);
 
@@ -61,9 +61,15 @@ const StepContainer = () => {
   const finishStep = useCallback(() => {
     alert("отправка формы регистрации");
     setStateForm({
-      ...baseStateForm,
+      ...resetState,
     });
+    localStorage.removeItem("formState");
   }, []);
+
+  useEffect(() => {
+    console.log("стейт формы", stateForm);
+    localStorage.setItem("formState", JSON.stringify(stateForm));
+  }, [stateForm.stepCount]);
 
   return (
     <Box component="form" sx={{ width: "100%" }}>

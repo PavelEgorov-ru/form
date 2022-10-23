@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
 
+export type TStepContainer = {
+  state: TBaseStateForm;
+};
+
 export type TLayout = {
   children: ReactNode;
   stepCount: number;
