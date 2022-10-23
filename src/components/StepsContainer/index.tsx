@@ -8,7 +8,7 @@ import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
 
-const StepContainer: FC<TStepContainer> = React.memo(({ state }) => {
+const StepContainer: FC<TStepContainer> = ({ state }) => {
   const resetState: TBaseStateForm = {
     stepCount: 0,
     login: "",
@@ -114,6 +114,6 @@ const StepContainer: FC<TStepContainer> = React.memo(({ state }) => {
       />
     </Box>
   );
-});
+};
 
 export default StepContainer;
