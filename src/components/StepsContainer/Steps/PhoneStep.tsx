@@ -7,7 +7,7 @@ import LayoutStep from "./LayoutStep";
 import InputTextField from "../../InputTextField";
 
 const PhoneStep: FC<TStepBodyPhone> = React.memo(
-  ({ changeInputForm, phone, code, stepCount, setIsDisabledButtonNext }) => {
+  ({ changeInputForm, phone, code, setIsDisabledButtonNext }) => {
     const [inputsRequired, setInputsRequired] = useState({
       phone: phone,
       code: code,
@@ -71,7 +71,7 @@ const PhoneStep: FC<TStepBodyPhone> = React.memo(
     }, [inputsRequired.phone, checkRequiredPhone]);
 
     return (
-      <LayoutStep stepCount={stepCount}>
+      <LayoutStep>
         <InputTextField
           name="phone"
           placeholder="Телефон *"

@@ -7,7 +7,6 @@ export type TStepContainer = {
 
 export type TLayout = {
   children: ReactNode;
-  stepCount: number;
 };
 
 export type TStepHeader = {
@@ -24,7 +23,6 @@ export type TStepButton = {
 
 type TStepBody = {
   changeInputForm: TOnChange;
-  stepCount: number;
   setIsDisabledButtonNext: TChangeActive;
 };
 

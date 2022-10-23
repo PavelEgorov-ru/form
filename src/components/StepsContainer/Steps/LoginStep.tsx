@@ -11,7 +11,6 @@ const LoginStep: FC<TStepBodyLogin> = React.memo(
     email,
     password,
     passwordRepet,
-    stepCount,
     setIsDisabledButtonNext,
   }) => {
     const [inputsRequired, setInputsRequired] = useState({
@@ -58,7 +57,7 @@ const LoginStep: FC<TStepBodyLogin> = React.memo(
     }, [inputsRequired, checkRequired]);
 
     return (
-      <LayoutStep stepCount={stepCount}>
+      <LayoutStep>
         <InputTextField
           name="login"
           placeholder="Логин"

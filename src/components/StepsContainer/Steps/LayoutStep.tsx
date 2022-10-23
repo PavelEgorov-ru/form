@@ -3,7 +3,7 @@ import type { TLayout } from "../../../types";
 
 import { Card } from "@mui/material";
 
-const LayoutStep: FC<TLayout> = React.memo(({ children, stepCount }) => {
+const LayoutStep: FC<TLayout> = React.memo(({ children }) => {
   return (
     <Card
       sx={{

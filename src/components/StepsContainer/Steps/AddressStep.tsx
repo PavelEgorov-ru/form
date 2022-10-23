@@ -11,7 +11,6 @@ const AddressStep: FC<TStepBodyLAddress> = React.memo(
     city,
     street,
     house,
-    stepCount,
     setIsDisabledButtonNext,
   }) => {
     const [inputsRequired, setInputsRequired] = useState({
@@ -57,7 +56,7 @@ const AddressStep: FC<TStepBodyLAddress> = React.memo(
     }, [inputsRequired, checkRequired]);
 
     return (
-      <LayoutStep stepCount={stepCount}>
+      <LayoutStep>
         <InputTextField
           name="country"
           placeholder="Страна *"

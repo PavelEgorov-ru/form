@@ -81,7 +81,6 @@ const StepContainer: FC<TStepContainer> = ({ state }) => {
           email={stateForm.email}
           password={stateForm.password}
           passwordRepet={stateForm.passwordRepet}
-          stepCount={stateForm.stepCount}
           setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
@@ -92,7 +91,6 @@ const StepContainer: FC<TStepContainer> = ({ state }) => {
           city={stateForm.city}
           street={stateForm.street}
           house={stateForm.house}
-          stepCount={stateForm.stepCount}
           setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
@@ -101,7 +99,6 @@ const StepContainer: FC<TStepContainer> = ({ state }) => {
           changeInputForm={changeInputForm}
           phone={stateForm.phone}
           code={stateForm.code}
-          stepCount={stateForm.stepCount}
           setIsDisabledButtonNext={setIsDisabledButtonNext}
         />
       )}
