@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect, FC } from "react";
 import type { TBaseStateForm, TStepContainer } from "../../types";
+
 import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
 import StepsButton from "./StepsButton";
@@ -7,7 +8,7 @@ import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
 
-const StepContainer: FC<TStepContainer> = ({ state }) => {
+const StepContainer: FC<TStepContainer> = React.memo(({ state }) => {
   const resetState: TBaseStateForm = {
     stepCount: 0,
     login: "",
@@ -21,6 +22,7 @@ const StepContainer: FC<TStepContainer> = ({ state }) => {
     phone: "",
     code: "",
   };
+
   const [stateForm, setStateForm] = useState({
     ...state,
   });
@@ -112,6 +114,6 @@ const StepContainer: FC<TStepContainer> = ({ state }) => {
       />
     </Box>
   );
-};
+});
 
 export default StepContainer;
