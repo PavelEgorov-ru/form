@@ -63,3 +63,17 @@ export type TInputTextField = {
   fullWidth?: boolean;
   disabled?: boolean;
 };
+
+export type TBaseStateForm = {
+  stepCount: number;
+  login: string;
+  email: string;
+  password: string;
+  passwordRepet: string;
+  country: string;
+  city: string;
+  street: string;
+  house: string;
+  phone: string;
+  code: string;
+};

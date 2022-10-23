@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useAppSelector } from "../../hooks";
-
+import type { TBaseStateForm } from "../../types";
 import { Box } from "@mui/material";
 import StepsHeader from "./StepsHeader";
 import StepsButton from "./StepsButton";
@@ -10,7 +10,7 @@ import LoginStep from "./Steps/LoginStep";
 import { formActions } from "../../services/reducers";
 
 const StepContainer = () => {
-  const [stateForm, setStateForm] = useState({
+  const baseStateForm: TBaseStateForm = {
     stepCount: 0,
     login: "",
     email: "",
@@ -22,6 +22,9 @@ const StepContainer = () => {
     house: "",
     phone: "",
     code: "",
+  };
+  const [stateForm, setStateForm] = useState({
+    ...baseStateForm,
   });
   const [isDisabledButtonNext, setIsDisabledButtonNext] = useState(true);
 
@@ -58,6 +61,9 @@ const StepContainer = () => {
 
   const finishStep = useCallback(() => {
     alert("отправка формы регистрации");
+    setStateForm({
+      ...baseStateForm,
+    });
   }, []);
 
   return (
