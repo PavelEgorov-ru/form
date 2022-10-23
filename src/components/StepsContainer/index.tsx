@@ -7,7 +7,6 @@ import StepsButton from "./StepsButton";
 import AddressStep from "./Steps/AddressStep";
 import PhoneStep from "./Steps/PhoneStep";
 import LoginStep from "./Steps/LoginStep";
-import { formActions } from "../../services/reducers";
 
 const StepContainer = () => {
   const baseStateForm: TBaseStateForm = {
