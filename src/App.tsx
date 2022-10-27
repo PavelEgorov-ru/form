@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { TBaseStateForm } from "./types";
+import { Container, Typography } from "@mui/material";
+import StepContainer from "./components/StepsContainer";
 
 function App() {
+  const state: TBaseStateForm = {
+    stepCount: 0,
+    login: "",
+    email: "",
+    password: "",
+    passwordRepet: "",
+    country: "",
+    city: "",
+    street: "",
+    house: "",
+    phone: "",
+    code: "",
+  };
+
+  const localState: string | null = localStorage.getItem("formState");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container sx={{ marginTop: "30px" }}>
+      <Typography
+        component="h1"
+        sx={{
+          marginTop: "20px",
+          marginBottom: "20px",
+          textAlign: "center",
+        }}
+      >
+        Форма регистрации с последовательными шагами
+      </Typography>
+      <StepContainer state={localState ? JSON.parse(localState) : state} />
+    </Container>
   );
 }
 
